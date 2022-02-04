@@ -1,10 +1,10 @@
 ## Install
 
 ```
-composer install
-npm install
-docker-compose up -d
-npm run watch
+1. composer install
+2. npm install
+3. docker-compose up -d
+4. npm run watch
 ```
 ## License
 
