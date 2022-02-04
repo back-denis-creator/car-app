@@ -12,7 +12,7 @@
           <div class="col-md-6">
             <div class="input-group">
                  <label for="life-time" class="form-control">Lifetime</label>
-                 <input type="datetime-local" :min="`${new Date().toLocaleDateString('en-US')}T00:00`" v-model="time" class="form-control w-50" required id="life-time" />
+                 <input type="time" v-model="time" class="form-control w-50" required id="life-time" />
             </div>
           </div>
         </div>

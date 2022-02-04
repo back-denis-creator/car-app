@@ -27,10 +27,10 @@ class LinkController extends Controller
             'lifetime' => 'required',
         ]);
 
-        $UniqueName = substr(md5(uniqid(rand(1,6))), 0, 8);
+        $uniqueName = substr(md5(uniqid(rand(1,6))), 0, 8);
 
         return Link::create([
-            'name' => $UniqueName, 
+            'name' => $uniqueName, 
             'url' => htmlspecialchars($request->url), 
             'lifetime' => $request->lifetime
         ]);
@@ -48,12 +48,17 @@ class LinkController extends Controller
 
         if(!empty($link)) { 
 
-            $timeLife = strtotime($link->created_at) + strtotime($link->lifetime);
+            //Время которое уже прожила ссылка
+            $timeLife = time() - strtotime($link->created_at);
+   
+            //Время жизни -> unix
+            $unixTimeLife = explode(":", $link->lifetime);
+            $unixTimeLife[0] = $unixTimeLife[0] * 60 * 60;
+            $unixTimeLife[1] = $unixTimeLife[1] * 60;
+            $unixTimeLife = $unixTimeLife[0] + $unixTimeLife[1] + $unixTimeLife[2];
 
-            dd($timeLife);
-
-            if(strtotime($timeLife) > strtotime($link->lifetime)) {
-
+            //Если ссылка прожила больше, положенного ей времени
+            if($timeLife < $unixTimeLife) {
                 $link->update(['transitions' => $link->transitions + 1]);
             }else {
                 $link->delete();
