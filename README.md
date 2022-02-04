@@ -1,7 +1,6 @@
 ## Install
 
 ```
-git clone https://github.com/back-denis-creator/url-min.git dir-name
 composer install
 npm install
 docker-compose up -d
