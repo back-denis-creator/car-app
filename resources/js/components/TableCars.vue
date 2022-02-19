@@ -7,8 +7,8 @@
             <th scope="col">Name</th>
             <th scope="col">Year</th>
             <th scope="col">Engine Capacity</th>
+            <th scope="col">Fuel</th>
             <th scope="col">Price</th>
-            <th scope="col">Created</th>
             </tr>
         </thead>
         <tbody>
@@ -17,8 +17,8 @@
                 <td>{{ car.name }}</td>
                 <td>{{ car.year }}</td>
                 <td>{{ car.engine_capacity }}</td>
+                <td>{{ car.fuel }}</td>
                 <td>{{ car.price }}</td>
-                <td></td>
             </tr>
         </tbody>
         </table>
