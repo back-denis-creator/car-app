@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/cars', [CarController::class, 'index']);
+Route::get('/cars', [CarController::class, 'getCars']);
+Route::get('/car/{id}', [CarController::class, 'getCar']);
 
