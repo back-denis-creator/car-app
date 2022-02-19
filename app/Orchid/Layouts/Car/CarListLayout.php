@@ -35,12 +35,12 @@ class CarListLayout extends Table
                         ->route('platform.car.edit', $car);
                 }),
 
-            TD::make('image', __('Image'))
+            TD::make('picture', __('Image'))
                 ->width(100)
                 ->render(function (Car $car) {
-                    $images = $car->attachment()->get();
-                    if (!empty($images[0])) {
-                        return "<a href='car/{$car->id}'><img src='{$images[0]->relativeUrl}' alt='sample' width='50' height='50' class='mw-25 d-block img-fluid'></a>";
+                    $image = $car->picture;
+                    if (!empty($image)) {
+                        return "<a href='car/{$car->id}'><img src='http://localhost:8002{$car->picture}' alt='sample' width='50' height='50' class='mw-25 d-block img-fluid'></a>";
                     } else {
                         return "<a href='car/{$car->id}'>No picture</a>";
                     }

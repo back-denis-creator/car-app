@@ -4,6 +4,7 @@
         <thead>
             <tr>
             <th scope="col">ID</th>
+            <th scope="col">Image</th>
             <th scope="col">Name</th>
             <th scope="col">Year</th>
             <th scope="col">Engine Capacity</th>
@@ -14,6 +15,7 @@
         <tbody>
             <tr v-for="car in cars" :key="car.id">
                 <th scope="row">{{ car.id }}</th>
+                <th><router-link :to="{ name: 'car', params: { id: car.id }}"><img class="picture" :src="car.image" width="100" height="100" alt="lorem"></router-link></th>
                 <td><router-link :to="{ name: 'car', params: { id: car.id }}">{{ car.name }}</router-link></td>
                 <td>{{ car.year }}</td>
                 <td>{{ car.engine_capacity }}</td>
@@ -44,3 +46,15 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .picture {
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 100px;
+    }
+    .table {
+        text-align: center;
+        vertical-align: inherit;
+    }
+</style>

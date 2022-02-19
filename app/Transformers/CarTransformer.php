@@ -35,6 +35,7 @@ class CarTransformer extends TransformerAbstract
       return [
         'id' => $model->id,
         'name' => ($model->manufacturer->name . ' ' . $model->mark->name) ?? null,
+        'image' => $model->picture,
         'manufacturer' => $model->manufacturer->name ?? null,
         'mark' => $model->mark->name ?? null,
         'year' => $model->production_year,

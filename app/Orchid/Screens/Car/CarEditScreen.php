@@ -8,9 +8,13 @@ use App\Models\Lists\Fuel;
 use App\Models\Lists\Manufacture;
 use App\Models\Lists\Mark;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Fields\Cropper;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\PictureMini;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Screen;
@@ -98,10 +102,10 @@ class CarEditScreen extends Screen
                     ]),
                 ]),
                 Layout::rows([
-                    Group::make([
-                        Upload::make('car.attachment')
-                            ->maxFiles(1)
-                    ]),
+                    PictureMini::make('car.picture')
+                        ->width(500)
+                        ->height(300)
+                        ->targetRelativeUrl()                  
                 ])
             ]),
             Layout::columns([
@@ -158,12 +162,16 @@ class CarEditScreen extends Screen
      */
     public function createOrUpdate(Car $car, Request $request)
     {
-        $car->fill($request->get('car'))->save();
+        $carData = $request->get('car');
+        $picture = $request->get('car')['picture'] ?? null;
 
-        // Сохранение картинки
-        $car->attachment()->syncWithoutDetaching(
-            $request->input('car.attachment', [])
-        );
+        //Если мы не загрузили картинку, добавляем дефолтную
+        if(empty($picture)) {
+            $url = Storage::url('car.png');
+            $carData['picture'] = $url;
+        }
+
+        $car->fill($carData)->save();
 
         Alert::info(__('You have successfully created an car.'));
 

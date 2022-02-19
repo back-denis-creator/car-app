@@ -15,6 +15,7 @@ class CreateCarsTable extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
+            $table->string('picture')->nullable();
             $table->foreignId('mark_id')->references('id')->on('marks')->onDelete('cascade');
             $table->foreignId('manufacturer_id')->references('id')->on('manufactures')->onDelete('cascade');
             $table->string('vin');
