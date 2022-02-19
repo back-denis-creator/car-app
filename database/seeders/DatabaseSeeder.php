@@ -51,14 +51,14 @@ class DatabaseSeeder extends Seeder
         for($i = 0; $i < 50; $i++) {
             DB::table('cars')->insert([
                 'picture' => Storage::url('car.png'),
-                'mark_id' => Mark::inRandomOrder()->get()[0]['id'],
-                'manufacturer_id' => Manufacture::inRandomOrder()->get()[0]['id'],
+                'mark_id' => Mark::inRandomOrder()->get()->first()['id'],
+                'manufacturer_id' => Manufacture::inRandomOrder()->get()->first()['id'],
                 'vin' => $faker->vin,
-                'fuel_id' => Fuel::inRandomOrder()->get()[0]['id'],
-                'engine_capacity' => $this->randomFloat(1, 8),
-                'production_year' => $faker->biasedNumberBetween(1998,2017, 'sqrt'),
+                'fuel_id' => Fuel::inRandomOrder()->get()->first()['id'],
+                'engine_capacity' => $this->randomFloat(1, 15),
+                'production_year' => $faker->biasedNumberBetween(1970, 2022, 'sqrt'),
                 'price' => $this->randomFloat(2000, 10000),
-                'country_id' => Country::inRandomOrder()->get()[0]['id']
+                'country_id' => Country::inRandomOrder()->get()->first()['id']
             ]);
         }
         
