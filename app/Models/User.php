@@ -12,7 +12,6 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    //Есть оверрайд в Orchid
     use HasFactory, Notifiable, HasApiTokens;
 
     /**
