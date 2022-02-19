@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for($i = 0; $i < 20; $i++) {
+        for($i = 0; $i < 50; $i++) {
             DB::table('cars')->insert([
                 'picture' => Storage::url('car.png'),
                 'mark_id' => Mark::inRandomOrder()->get()[0]['id'],
