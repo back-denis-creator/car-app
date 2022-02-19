@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\LinkController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
