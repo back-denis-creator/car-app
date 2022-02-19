@@ -11,4 +11,9 @@ class Manufacture extends Model
     use HasFactory, AsSource;
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'id',
+        'name',
+    ];
 }

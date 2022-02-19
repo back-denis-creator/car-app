@@ -22,7 +22,7 @@ class PlatformScreen extends Screen
      *
      * @var string
      */
-    public $description = 'Welcome to your Orchid application.';
+    public $description = 'Welcome to your Car application.';
 
     /**
      * Query data.

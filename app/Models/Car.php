@@ -13,6 +13,7 @@ class Car extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'id',
         'mark_id',
         'manufacturer_id',
         'vin',
