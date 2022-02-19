@@ -32,6 +32,9 @@ class CarTransformer extends TransformerAbstract
      */
     public function transform(Car $model)
     {
+      $price = bcdiv($model->price, 1, 2);
+      $engineCapacity = bcdiv($model->engine_capacity, 1, 2);
+
       return [
         'id' => $model->id,
         'name' => ($model->manufacturer->name . ' ' . $model->mark->name) ?? null,
@@ -39,8 +42,8 @@ class CarTransformer extends TransformerAbstract
         'manufacturer' => $model->manufacturer->name ?? null,
         'mark' => $model->mark->name ?? null,
         'year' => $model->production_year,
-        'engine_capacity' => $model->engine_capacity,
-        'price' => $model->price,
+        'engine_capacity' => (float) $engineCapacity,
+        'price' => (float) $price,
         'vin' => $model->vin,
         'fuel' => $model->fuel->name ?? null,
         'country' => $model->country->name ?? null,

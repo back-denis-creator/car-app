@@ -41,9 +41,9 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.cars')
                 ->permission('platform.cars'),
 
-            Menu::make('Lists')
-                ->icon('options-vertical')
-                ->list([
+            // Menu::make('Lists')
+            //     ->icon('options-vertical')
+            //     ->list([
                     // Menu::make('Countries')
                     //     ->icon('layers')
                     //     ->route('platform.countries')
@@ -60,7 +60,7 @@ class PlatformProvider extends OrchidServiceProvider
                     //     ->icon('layers')
                     //     ->route('platform.marks')
                     //     ->permission('platform.marks'),
-                ]),
+                // ]),
 
             // Menu::make('Basic Elements')
             //     ->title('Form controls')
