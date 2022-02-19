@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <link as="style" href="{{ mix('css/app.css') }}" rel="stylesheet preload preconnect">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>URL Minimizer</title>
+        <title>Car App</title>
         <link rel="shortcut icon" href="/favicon.ico" type="image/ico">
 
         <!-- Fonts -->
