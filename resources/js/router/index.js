@@ -1,6 +1,6 @@
 import { createWebHistory, createRouter } from "vue-router";
 const Home = () => import('@/js/Views/Home.vue');
-const Statistic = () => import('@/js/Views/Statistic.vue');
+const Car = () => import('@/js/Views/Car.vue');
 
 const routes = [
   {
@@ -9,9 +9,9 @@ const routes = [
     component: Home,
   },
   {
-    path: "/statistic",
-    name: "Statistic",
-    component: Statistic,
+    path: "/:url?",
+    name: "Car",
+    component: Car,
   },
   {
     path: '/:pathMatch(.*)*',

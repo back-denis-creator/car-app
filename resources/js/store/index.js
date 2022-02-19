@@ -1,10 +1,10 @@
 import { createStore } from 'vuex'
 import createPersistedState from "vuex-persistedstate"
-import { linkModule } from "./linkModule"
+import { carModule } from "./carModule"
 
 export default createStore({
   plugins: [createPersistedState()],
   modules: {
-    link: linkModule,
+    car: carModule,
   }
 })

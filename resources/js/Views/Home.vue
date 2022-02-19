@@ -1,20 +1,20 @@
 <template>
   <div class="home-page">
       <div class="row">
-        <LinkMaker />
+        <TableCars />
       </div>
   </div>
 </template>
 
 <script>
 import { defineAsyncComponent } from "vue";
-const LinkMaker = defineAsyncComponent(() => import("@/js/components/LinkMaker.vue"));
+const TableCars = defineAsyncComponent(() => import("@/js/components/TableCars.vue"));
 
 
 export default {
   name: "home",
   components: {
-    LinkMaker
+    TableCars
   }
 };
 </script>
