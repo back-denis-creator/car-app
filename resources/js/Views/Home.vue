@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page">
+  <div class="home-page mt-4">
       <div class="row">
         <TableCars />
       </div>

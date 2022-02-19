@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row text-center mt-2">
+    <div class="row text-center mt-4">
       <NavBar />
     </div>
     <!-- Страницы -->
