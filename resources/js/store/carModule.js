@@ -89,9 +89,9 @@ export const carModule = {
         },
         async customPayments({ commit }, data) {
             await axios.post('/api/car/calculate', data).then((res) => {
-                commit('setCarExcise', res.data.data);
-                commit('setCarImportDuty', res.data.data);
-                commit('setCarVat', res.data.data);
+                commit('setCarExcise', res.data['E']);
+                commit('setCarImportDuty', res.data['F']);
+                commit('setCarVat', res.data['T']);
             }).catch((err) => {
 
             })

@@ -42,18 +42,22 @@ class CarController extends Controller
      */
     public function calculate(Request $request)
     {
-        // dd($request);
-
         //коэффициент возраста авто
         $carAgeFactor = (int) date("Y") - $request->year - 1;
         if($carAgeFactor > 15) {
             $carAgeFactor = 15;
+        }else if($carAgeFactor <= 0) {
+            $carAgeFactor = 1;
         }
 
         //коэффициент топлива
         switch ($request->fuel) {
             case "benzine":
-                $fuelRatio = 150;
+                if(($request->volume * 1000) > 3000) {
+                    $fuelRatio = 100;
+                }else if(($request->volume * 1000) <= 3000) {
+                    $fuelRatio = 50;
+                }
                 break;
             case "gas":
                 $fuelRatio = 75;
@@ -65,20 +69,31 @@ class CarController extends Controller
                 $fuelRatio = 75;
                 break;
             case "diesel":
-                $fuelRatio = 75;
+                if(($request->volume * 1000) > 3500) {
+                    $fuelRatio = 150;
+                }else if(($request->volume * 1000) <= 3500) {
+                    $fuelRatio = 75;
+                }
                 break;
             default:
                 $fuelRatio = 100;
                 break;
         }
 
-        // $result = [
-        //     'excise' => $request->price,
-        //     'importDuty' => $request->volume,
-        //     'vat' => $request->year,
-        // ];
+        //акциз
+        $excise = (float) bcdiv(($fuelRatio * $carAgeFactor * ($request->volume * 1000) / 1000 * 0.28), 1, 2);
 
-        return $fuelRatio;
+        //ввозная пошлина
+        $importDuty = (float) bcdiv($request->price / 100 * 10, 1, 2);
+
+        //таможенный платеж
+        $customPayments = (float) bcdiv(($excise + $importDuty + $request->price) / 100 * 20, 1, 2);
+
+        return  [
+           'E' => $excise,
+           'F' => $importDuty,
+           'T' => $customPayments,
+        ];
     }
 
 }
