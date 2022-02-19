@@ -5,20 +5,6 @@
     <div class="aside col-xs-12 col-md-2 bg-dark">
         <div class="d-md-flex align-items-start flex-column d-sm-block h-full">
 
-            <header class="d-sm-flex d-md-block p-3 mt-md-4 w-100 d-flex align-items-center">
-                <a href="#" class="header-toggler d-md-none me-auto order-first d-flex align-items-center"
-                   data-bs-toggle="collapse"
-                   data-bs-target="#headerMenuCollapse">
-                    <x-orchid-icon path="menu" class="icon-menu"/>
-
-                    <span class="ms-2">@yield('title')</span>
-                </a>
-
-                <a class="header-brand order-last" href="{{route('platform.index')}}">
-                    @includeFirst([config('platform.template.header'), 'platform::header'])
-                </a>
-            </header>
-
             <nav class="collapse d-md-block w-100 mb-md-3" id="headerMenuCollapse">
 
                 @include('platform::partials.search')
@@ -42,10 +28,6 @@
                     </small>
                 </div>
             </div>
-
-            <footer class="p-3 mb-2 m-t d-none d-lg-block w-100">
-                @includeFirst([config('platform.template.footer'), 'platform::footer'])
-            </footer>
 
         </div>
     </div>
