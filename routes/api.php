@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/cars', [CarController::class, 'getCars']);
 Route::get('/car/{id}', [CarController::class, 'getCar']);
+Route::post('/car/calculate', [CarController::class, 'calculate']);
 
