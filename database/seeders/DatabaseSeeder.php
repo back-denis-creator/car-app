@@ -55,16 +55,16 @@ class DatabaseSeeder extends Seeder
                 'manufacturer_id' => Manufacture::inRandomOrder()->get()[0]['id'],
                 'vin' => $faker->vin,
                 'fuel_id' => Fuel::inRandomOrder()->get()[0]['id'],
-                'engine_capacity' => $this->random_float(0, 10),
+                'engine_capacity' => $this->randomFloat(0, 10),
                 'production_year' => $faker->biasedNumberBetween(1998,2017, 'sqrt'),
-                'price' => $this->random_float(100, 10000),
+                'price' => $this->randomFloat(100, 10000),
                 'country_id' => Country::inRandomOrder()->get()[0]['id']
             ]);
         }
         
     }
 
-    function random_float($min, $max) {
+    public function randomFloat($min, $max) {
         return random_int($min, $max - 1) + (random_int(0, PHP_INT_MAX - 1) / PHP_INT_MAX );
     }
 }
