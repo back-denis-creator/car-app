@@ -55,9 +55,9 @@ class DatabaseSeeder extends Seeder
                 'manufacturer_id' => Manufacture::inRandomOrder()->get()[0]['id'],
                 'vin' => $faker->vin,
                 'fuel_id' => Fuel::inRandomOrder()->get()[0]['id'],
-                'engine_capacity' => $this->randomFloat(0, 10),
+                'engine_capacity' => $this->randomFloat(1, 8),
                 'production_year' => $faker->biasedNumberBetween(1998,2017, 'sqrt'),
-                'price' => $this->randomFloat(100, 10000),
+                'price' => $this->randomFloat(2000, 10000),
                 'country_id' => Country::inRandomOrder()->get()[0]['id']
             ]);
         }

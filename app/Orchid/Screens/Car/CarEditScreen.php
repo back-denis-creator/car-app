@@ -122,7 +122,7 @@ class CarEditScreen extends Screen
                             ->type('number')
                             ->min(1)
                             ->max(6)
-                            ->step(0.1)
+                            ->step(0.01)
                             ->title(__('Engine capacity')),
                         Input::make('car.production_year')
                             ->required()
@@ -136,7 +136,7 @@ class CarEditScreen extends Screen
                             ->required()
                             ->type('number')
                             ->min(0.1)
-                            ->step(0.1)
+                            ->step(0.01)
                             ->title(__('Price')),
                         Select::make('car.country_id')
                             ->title(__('Country'))
