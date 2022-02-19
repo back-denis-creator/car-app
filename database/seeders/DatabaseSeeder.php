@@ -35,11 +35,11 @@ class DatabaseSeeder extends Seeder
         }
 
         DB::table('fuels')->insert([
-            ['name' => 'бензин'],
-            ['name' => 'газ'],
-            ['name' => 'гибрид'],
-            ['name' => 'электро'],
-            ['name' => 'дизель'],
+            ['name' => 'benzine'],
+            ['name' => 'gas'],
+            ['name' => 'hybrid'],
+            ['name' => 'electro'],
+            ['name' => 'diesel'],
         ]);
         
         for($i = 0; $i < 100; $i++) {
@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        for($i = 0; $i < 10; $i++) {
+        for($i = 0; $i < 20; $i++) {
             DB::table('cars')->insert([
                 'picture' => Storage::url('car.png'),
                 'mark_id' => Mark::inRandomOrder()->get()[0]['id'],
