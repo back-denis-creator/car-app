@@ -7,30 +7,30 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: url-min
-    container_name: url-min-app
+    image: car-app
+    container_name: car-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
       - ./:/var/www
     networks:
-      - url-min
+      - car-app
 
   db:
     image: mysql:5.7
-    container_name: url-min-db
+    container_name: car-app-db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: url-min-db
-      MYSQL_ROOT_PASSWORD: url-min
-      MYSQL_PASSWORD: url-min
-      MYSQL_USER: url-min
+      MYSQL_DATABASE: car-app-db
+      MYSQL_ROOT_PASSWORD: car-app
+      MYSQL_PASSWORD: car-app
+      MYSQL_USER: car-app
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
-      - url-min
+      - car-app
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -45,11 +45,11 @@ services:
     ports:
       - 8003:80
     networks:
-      - url-min
+      - car-app
 
   nginx:
     image: nginx:alpine
-    container_name: url-min-nginx
+    container_name: car-app-nginx
     restart: unless-stopped
     ports:
       - 8002:80
@@ -57,8 +57,8 @@ services:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
     networks:
-      - url-min
+      - car-app
 
 networks:
-  url-min:
+  car-app:
     driver: bridge
