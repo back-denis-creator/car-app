@@ -11,8 +11,9 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "spatie/laravel-fractal": "^5.8",
-        "orchid/platform": "^10.14"
+        "orchid/platform": "^10.14",
+        "pelmered/fake-car": "^1.7",
+        "spatie/laravel-fractal": "^5.8"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
