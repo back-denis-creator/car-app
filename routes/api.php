@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\LinkController;
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/links', [LinkController::class, 'index']);
-Route::post('/link', [LinkController::class, 'store']);
+Route::get('/cars', [CarController::class, 'index']);
 
