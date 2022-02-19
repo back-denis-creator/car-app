@@ -5,12 +5,12 @@ const Car = () => import('@/js/Views/Car.vue');
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
   },
   {
-    path: "/:url?",
-    name: "Car",
+    path: "/car/:id",
+    name: "car",
     component: Car,
   },
   {

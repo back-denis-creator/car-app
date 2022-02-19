@@ -14,7 +14,7 @@
         <tbody>
             <tr v-for="car in cars" :key="car.id">
                 <th scope="row">{{ car.id }}</th>
-                <td>{{ car.name }}</td>
+                <td><router-link :to="{ name: 'car', params: { id: car.id }}">{{ car.name }}</router-link></td>
                 <td>{{ car.year }}</td>
                 <td>{{ car.engine_capacity }}</td>
                 <td>{{ car.fuel }}</td>
