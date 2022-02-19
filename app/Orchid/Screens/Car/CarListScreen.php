@@ -27,7 +27,7 @@ class CarListScreen extends Screen
     public function query(): array
     {
         return [
-            'cars' => Car::defaultSort('created_at', 'desc')->paginate(10)
+            'cars' => Car::paginate(10)
         ];
     }
 

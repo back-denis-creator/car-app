@@ -44,22 +44,22 @@ class PlatformProvider extends OrchidServiceProvider
             Menu::make('Lists')
                 ->icon('options-vertical')
                 ->list([
-                    Menu::make('Countries')
-                        ->icon('layers')
-                        ->route('platform.countries')
-                        ->permission('platform.countries'),
-                    Menu::make('Fuels')
-                        ->icon('layers')
-                        ->route('platform.fuels')
-                        ->permission('platform.fuels'),
-                    Menu::make('Manufactures')
-                        ->icon('layers')
-                        ->route('platform.manufactures')
-                        ->permission('platform.manufactures'),
-                    Menu::make('Marks')
-                        ->icon('layers')
-                        ->route('platform.marks')
-                        ->permission('platform.marks'),
+                    // Menu::make('Countries')
+                    //     ->icon('layers')
+                    //     ->route('platform.countries')
+                    //     ->permission('platform.countries'),
+                    // Menu::make('Fuels')
+                    //     ->icon('layers')
+                    //     ->route('platform.fuels')
+                    //     ->permission('platform.fuels'),
+                    // Menu::make('Manufactures')
+                    //     ->icon('layers')
+                    //     ->route('platform.manufactures')
+                    //     ->permission('platform.manufactures'),
+                    // Menu::make('Marks')
+                    //     ->icon('layers')
+                    //     ->route('platform.marks')
+                    //     ->permission('platform.marks'),
                 ]),
 
             // Menu::make('Basic Elements')

@@ -3,11 +3,16 @@
 namespace App\Orchid\Screens\Car;
 
 use App\Models\Car;
+use App\Models\Lists\Country;
+use App\Models\Lists\Fuel;
+use App\Models\Lists\Manufacture;
+use App\Models\Lists\Mark;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Quill;
+use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Alert;
 use Orchid\Support\Facades\Layout;
@@ -82,26 +87,63 @@ class CarEditScreen extends Screen
             Layout::columns([
                 Layout::rows([
                     Group::make([
-                        Input::make('car.name')
-                            ->title(__('Name')),
-                        Input::make('car.telephone')
-                            ->title(__('Telephone')),
-                        Input::make('car.email')
-                            ->title(__('Email')),
+                        Select::make('car.manufacturer_id')
+                            ->title(__('Manufacturer'))
+                            ->required()
+                            ->fromModel(Manufacture::class, 'name', 'id'),
+                        Select::make('car.mark_id')
+                            ->title(__('Mark'))
+                            ->required()
+                            ->fromModel(Mark::class, 'name', 'id'),
                     ]),
-                    Quill::make('car.comment')
-                        ->type('text')
-                        ->title(__('Comment'))
-                        ->placeholder('Comment'),
                 ]),
                 Layout::rows([
                     Group::make([
-                        Input::make('car.to_call_date')
-                            ->title(__('Call date')),
-                        Input::make('car.to_call_time')
-                            ->title(__('Call time')),
+                        Upload::make('car.attachment')
+                            ->maxFiles(1)
+                    ]),
+                ])
+            ]),
+            Layout::columns([
+                Layout::rows([
+                    Group::make([
+                        Input::make('car.vin')
+                            ->required()
+                            ->title(__('VIN')),
+                        Select::make('car.fuel_id')
+                            ->title(__('Fuel'))
+                            ->required()
+                            ->fromModel(Fuel::class, 'name', 'id'),
+                    ]),
+                    Group::make([
+                        Input::make('car.engine_capacity')
+                            ->required()
+                            ->type('number')
+                            ->min(1)
+                            ->max(6)
+                            ->step(0.1)
+                            ->title(__('Engine capacity')),
+                        Input::make('car.production_year')
+                            ->required()
+                            ->type('number')
+                            ->min(1970)
+                            ->max(2022)
+                            ->title(__('Production year')),
+                    ]),
+                    Group::make([
+                        Input::make('car.price')
+                            ->required()
+                            ->type('number')
+                            ->min(0.1)
+                            ->step(0.1)
+                            ->title(__('Price')),
+                        Select::make('car.country_id')
+                            ->title(__('Country'))
+                            ->required()
+                            ->fromModel(Country::class, 'name', 'id'),
                     ]),
                 ]),
+                Layout::rows([])->canSee(false)
             ]),
 
 
@@ -116,7 +158,12 @@ class CarEditScreen extends Screen
      */
     public function createOrUpdate(Car $car, Request $request)
     {
-        $car->fill($request->get('call'))->save();
+        $car->fill($request->get('car'))->save();
+
+        // Сохранение картинки
+        $car->attachment()->syncWithoutDetaching(
+            $request->input('car.attachment', [])
+        );
 
         Alert::info(__('You have successfully created an car.'));
 

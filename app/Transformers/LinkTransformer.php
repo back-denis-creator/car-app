@@ -2,10 +2,10 @@
 
 namespace App\Transformers;
 
-use App\Models\Link;
+use App\Models\Car;
 use League\Fractal\TransformerAbstract;
 
-class LinkTransformer extends TransformerAbstract
+class CarTransformer extends TransformerAbstract
 {
     /**
      * List of resources to automatically include
@@ -30,16 +30,10 @@ class LinkTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform(Link $model)
+    public function transform(Car $model)
     {
       return [
         'id' => $model->id,
-        'name' => $model->name,
-        'url' => $model->url,
-        'lifetime' => $model->lifetime,
-        'transitions' => $model->transitions,
-        'created_at' => $model->created_at->toIso8601String(),
-        'updated_at' => $model->updated_at->toIso8601String(),
       ];
     }
 }
