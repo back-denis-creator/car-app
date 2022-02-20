@@ -16,6 +16,12 @@ Login: admin@admin.com
 Password: password
 ```
 
+## Seeds testing data
+
+```
+php artisan db:seed
+```
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
