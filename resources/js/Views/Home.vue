@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-      <div class="row">
+      <div class="container">
         <Cars />
       </div>
   </div>

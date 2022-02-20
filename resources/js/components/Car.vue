@@ -1,116 +1,114 @@
 <template>
-    <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">{{ car.name }}</h3>
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="white-box text-center"><img :src="car.image" class="img-responsive mw-100" ></div>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ car.name }}</h3>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="white-box text-center"><img :src="car.image" class="img-responsive mw-100" ></div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="col">
+                        <form class="calculateForm" @submit.prevent="submitForm">
+                            <div class="form-group mt-2">
+                                <label for="price" class="m-2">Price</label>
+                                <input
+                                    class="form-control"
+                                    id="price"
+                                    v-model="price"
+                                    type="number"
+                                    step="0.01"
+                                    name="price"
+                                >
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="volume" class="m-2">Volume</label>
+                                <input
+                                    class="form-control"
+                                    id="volume"
+                                    v-model="volume"
+                                    type="number"
+                                    step="0.01"
+                                    name="volume"
+                                    min="0.01"
+                                    max="15"
+                                >
+                            </div>
+                            <div class="form-group mt-2">
+                                <label for="year" class="m-2">Year</label>
+                                <input
+                                    class="form-control"
+                                    id="year"
+                                    v-model="year"
+                                    type="number"
+                                    step="1"
+                                    name="year"
+                                    min="1970"
+                                    max="2022"
+                                >
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary mt-4">Calculate</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <div class="col">
-                            <form class="calculateForm" @submit.prevent="submitForm">
-                                <div class="form-group mt-2">
-                                    <label for="price" class="m-2">Price</label>
-                                    <input
-                                        class="form-control"
-                                        id="price"
-                                        v-model="price"
-                                        type="number"
-                                        step="0.01"
-                                        name="price"
-                                    >
-                                </div>
-                                <div class="form-group mt-2">
-                                    <label for="volume" class="m-2">Volume</label>
-                                    <input
-                                        class="form-control"
-                                        id="volume"
-                                        v-model="volume"
-                                        type="number"
-                                        step="0.01"
-                                        name="volume"
-                                        min="0.01"
-                                        max="15"
-                                    >
-                                </div>
-                                <div class="form-group mt-2">
-                                    <label for="year" class="m-2">Year</label>
-                                    <input
-                                        class="form-control"
-                                        id="year"
-                                        v-model="year"
-                                        type="number"
-                                        step="1"
-                                        name="year"
-                                        min="1970"
-                                        max="2022"
-                                    >
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary mt-4">Calculate</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="result col-lg-4 col-md-4 col-sm-4">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <p>Excise:</p>
-                                    <p>Import duty: </p>
-                                    <p>VAT: </p>
-                                </div>
-                                <div class="col">
-                                    <div class="calculate text-end">
-                                        <p><b>{{ car.excise }}</b></p>
-                                        <p><b>{{ car.importDuty }}</b></p>
-                                        <p><b>{{ car.vat }}</b></p>
-                                    </div>
+                </div>
+                <div class="result col-lg-4 col-md-4 col-sm-4">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <p>Excise:</p>
+                                <p>Import duty: </p>
+                                <p>VAT: </p>
+                            </div>
+                            <div class="col">
+                                <div class="calculate text-end">
+                                    <p><b>{{ car.excise }}</b></p>
+                                    <p><b>{{ car.importDuty }}</b></p>
+                                    <p><b>{{ car.vat }}</b></p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <h3 class="box-title mt-5 mb-4">Information</h3>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-product">
-                                <tbody>
-                                    <tr>
-                                        <td width="390">Mark</td>
-                                        <td>{{ car.manufacturer }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Model</td>
-                                        <td>{{ car.mark }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>VIN</td>
-                                        <td>{{ car.vin }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Fuel</td>
-                                        <td>{{ car.fuel }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Volume</td>
-                                        <td>{{ car.volume }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Year</td>
-                                        <td>{{ car.year }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Price</td>
-                                        <td>{{ car.price }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Country</td>
-                                        <td>{{ car.country }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h3 class="box-title mt-5 mb-4">Information</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-product">
+                            <tbody>
+                                <tr>
+                                    <td width="390">Mark</td>
+                                    <td>{{ car.manufacturer }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Model</td>
+                                    <td>{{ car.mark }}</td>
+                                </tr>
+                                <tr>
+                                    <td>VIN</td>
+                                    <td>{{ car.vin }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Fuel</td>
+                                    <td>{{ car.fuel }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Volume</td>
+                                    <td>{{ car.volume }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Year</td>
+                                    <td>{{ car.year }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td>{{ car.price }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Country</td>
+                                    <td>{{ car.country }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

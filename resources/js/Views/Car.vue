@@ -1,6 +1,6 @@
 <template>
     <div class="statistic-page">
-        <div class="row">
+        <div class="container">
             <Car />
         </div>
     </div>
