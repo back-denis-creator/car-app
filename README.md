@@ -23,6 +23,14 @@ Password: password
 php artisan db:seed
 ```
 
+## phpMyAdmin
+
+```
+url: http://localhost:8003/
+Login: car-app
+Password: car-app
+```
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
