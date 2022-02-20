@@ -1,27 +1,15 @@
-import { createWebHistory, createRouter } from "vue-router";
-const Home = () => import('@/js/Views/Home.vue');
-const Car = () => import('@/js/Views/Car.vue');
 
-const routes = [
-  {
-    path: "/",
-    name: "home",
-    component: Home,
-  },
-  {
-    path: "/car/:id",
-    name: "car",
-    component: Car,
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    redirect: '/',
-  }
-];
+import routes from './routes.js'
+import { createWebHistory, createRouter } from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+//Отработает ПОСЛЕ вызова роутинга
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0);
 });
 
 export default router;
