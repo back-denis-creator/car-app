@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page mt-4">
+  <div class="home-page">
       <div class="row">
         <Cars />
       </div>
@@ -17,3 +17,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .home-page {
+    margin-top: 80px;
+  }
+</style>

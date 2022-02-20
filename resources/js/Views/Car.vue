@@ -1,5 +1,5 @@
 <template>
-    <div class="statistic-page mt-4">
+    <div class="statistic-page">
         <div class="row">
             <Car />
         </div>
@@ -16,3 +16,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .statistic-page {
+        margin-top: 80px;
+    }
+</style>

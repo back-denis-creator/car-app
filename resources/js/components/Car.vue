@@ -77,7 +77,7 @@
                             <table class="table table-striped table-product">
                                 <tbody>
                                     <tr>
-                                        <td width="390">Brand</td>
+                                        <td width="390">Mark</td>
                                         <td>{{ car.manufacturer }}</td>
                                     </tr>
                                     <tr>

@@ -1,29 +1,39 @@
 <template>
-    <div class="table-responsive">
-        <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Image</th>
-            <th scope="col">Name</th>
-            <th scope="col">Year</th>
-            <th scope="col">Engine Capacity</th>
-            <th scope="col">Fuel</th>
-            <th scope="col">Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="car in cars" :key="car.id">
-                <th scope="row">{{ car.id }}</th>
-                <th><router-link :to="{ name: 'car', params: { id: car.id }}"><img class="picture" :src="car.image" width="100" height="100" alt="lorem"></router-link></th>
-                <td><router-link :to="{ name: 'car', params: { id: car.id }}">{{ car.name }}</router-link></td>
-                <td>{{ car.year }}</td>
-                <td>{{ car.engine_capacity }}</td>
-                <td>{{ car.fuel }}</td>
-                <td>{{ car.price }}</td>
-            </tr>
-        </tbody>
-        </table>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" v-for="car in cars" :key="car.id">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                <router-link :to="{ name: 'car', params: { id: car.id }}" class="text-center p-2">
+                    <img class="picture car-img-top" :src="car.image" width="100" height="100" alt="lorem">
+                </router-link>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <router-link :to="{ name: 'car', params: { id: car.id }}">{{ car.name }}</router-link>
+                    </h5>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <p>Price: </p>
+                                <p>Mark: </p>
+                                <p>Model: </p>
+                                <p>Volume: </p>
+                                <p>Fuel: </p>
+                                <p>Year: </p>
+                            </div>
+                            <div class="col">
+                                <div class="text-end">
+                                    <p><b>{{ car.price }}</b></p>
+                                    <p><b>{{ car.manufacturer }}</b></p>
+                                    <p><b>{{ car.mark }}</b></p>
+                                    <p><b>{{ car.engine_capacity }}</b></p>
+                                    <p><b>{{ car.fuel }}</b></p>
+                                    <p><b>{{ car.year }}</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -56,5 +66,8 @@ export default {
     .table {
         text-align: center;
         vertical-align: inherit;
+    }
+    .card-title {
+        margin-bottom: 25px;
     }
 </style>
