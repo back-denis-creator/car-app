@@ -5,8 +5,8 @@
 2. npm install
 3. docker-compose up -d
 4. git reset --hard
-5. npm run production
-6. Если картинки не видны нужно создать символическую ссылку(php artisan storage:link), из докер контейнера
+5. npm run production (не обязательно)
+6. Создать символическую ссылку(чтобы видеть файлы), из докер-контейнера: php artisan storage:link
 ```
 
 ## Admin Panel
