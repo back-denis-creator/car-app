@@ -84,7 +84,7 @@ class CarController extends Controller
         $excise = (float) bcdiv(($fuelRatio * $carAgeFactor * ($request->volume * 1000) / 1000 * 0.28), 1, 2);
 
         //ввозная пошлина
-        $importDuty = (float) bcdiv($request->price / 100 * 10, 1, 2);
+        $importDuty = (float) bcdiv(($request->price + $request->cost ?? 0)/ 100 * 10, 1, 2);
 
         //таможенный платеж
         $customPayments = (float) bcdiv(($excise + $importDuty + $request->price) / 100 * 20, 1, 2);

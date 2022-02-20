@@ -30,6 +30,11 @@ class Car extends Model
         'country_id',
     ];
 
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->manufacturer->name} {$this->mark->name}";
+    }
+
     /**
      * Получить марку, которому принадлежит автомобиль.
      */
@@ -61,4 +66,13 @@ class Car extends Model
     {
         return $this->belongsTo(Country::class);
     }
+
+    /**
+     * Получить доставку, которому принадлежит автомобиль.
+     */
+    public function shipping()
+    {
+        return $this->hasOne(Shipping::class);
+    }
+
 }

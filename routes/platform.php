@@ -14,6 +14,8 @@ use App\Orchid\Screens\Examples\ExampleTextEditorsScreen;
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
+use App\Orchid\Screens\Shipping\ShippingEditScreen;
+use App\Orchid\Screens\Shipping\ShippingListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
@@ -126,3 +128,14 @@ Route::screen('cars', CarListScreen::class)
     });
 Route::screen('car/{car?}', CarEditScreen::class)
     ->name('platform.car.edit');
+
+//Shippings
+Route::screen('shippings', ShippingListScreen::class)
+    ->name('platform.shippings')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->parent('platform.index')
+            ->push(__('Shippings'), route('platform.shippings'));
+});
+Route::screen('shipping/{shipping?}', ShippingEditScreen::class)
+    ->name('platform.shipping.edit');

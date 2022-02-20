@@ -7,8 +7,19 @@
                     <div class="white-box text-center"><img :src="car.image" class="img-responsive mw-100" ></div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
-                    <div class="col">
+                    <div class="calculator col">
                         <form class="calculateForm" @submit.prevent="submitForm">
+                            <div class="form-group">
+                                <label for="shipping" class="m-2">Shipping cost</label>
+                                <input
+                                    class="form-control"
+                                    id="shipping"
+                                    v-model="shipping"
+                                    type="number"
+                                    step="0.01"
+                                    name="shipping"
+                                >
+                            </div>
                             <div class="form-group mt-2">
                                 <label for="price" class="m-2">Price</label>
                                 <input
@@ -124,6 +135,14 @@ export default {
         ...mapGetters({
             car: "car/car"
         }),
+        shipping: {
+            get() {
+                return this.$store.state.car.car.shippingCost;
+            },
+            set(value) {
+                this.$store.commit("car/setCarShippingCost", value);
+            },
+        },
         price: {
             get() {
                 return this.$store.state.car.car.price;
@@ -156,30 +175,20 @@ export default {
         }),
         ...mapMutations({
             setCarClear: "car/setCarClear",
-            setCarExcise: "car/setCarExcise",
-            setCarImportDuty: "car/setCarImportDuty",
-            setCarVat: "car/setCarVat",
         }),
         async submitForm(ev) {
             this.customPayments({
                 price: this.price,
                 volume: this.volume,
                 year: this.year,
-                fuel: this.car.fuel
+                fuel: this.car.fuel,
+                cost: this.shipping
             });
         }
     },
     mounted() {
-        this.getCar({ id: this.$route.params.id });
-        this.setCarExcise(null);
-        this.setCarImportDuty(null);
-        this.setCarVat(null);
-    },
-    unmounted() {
         this.setCarClear();
-        this.setCarExcise(null);
-        this.setCarImportDuty(null);
-        this.setCarVat(null);
+        this.getCar({ id: this.$route.params.id });
     }
 }
 </script>
@@ -218,5 +227,9 @@ export default {
     }
     .calculate {
         margin-right: 20px;
+    }
+    .calculator {
+        padding-left: 50px;
+        padding-right: 50px;
     }
 </style>

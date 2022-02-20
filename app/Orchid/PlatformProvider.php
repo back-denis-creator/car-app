@@ -41,6 +41,11 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.cars')
                 ->permission('platform.cars'),
 
+            Menu::make('Shippings')
+                ->icon('layers')
+                ->route('platform.shippings')
+                ->permission('platform.shippings'),
+
             // Menu::make('Lists')
             //     ->icon('options-vertical')
             //     ->list([
@@ -137,6 +142,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->addPermission('platform.systems.roles', __('Roles'))
                 ->addPermission('platform.systems.users', __('Users'))
                 ->addPermission('platform.cars', __('Cars'))
+                ->addPermission('platform.shippings', __('Shippings'))
                 ->addPermission('platform.lists.countries', __('Countries'))
                 ->addPermission('platform.lists.fuels', __('Fuels'))
                 ->addPermission('platform.lists.manufactures', __('Manufactures'))

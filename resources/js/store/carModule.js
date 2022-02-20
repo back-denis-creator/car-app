@@ -14,6 +14,7 @@ export const carModule = {
                 vin: '',
                 fuel: '',
                 country: '',
+                shippingCost: null,
                 //calculations values
                 excise: null,
                 importDuty: null,
@@ -46,6 +47,9 @@ export const carModule = {
             state.car.vin = data.vin
             state.car.fuel = data.fuel
             state.car.country = data.country
+            if(data.shipping !== undefined && data.shipping !== null) {
+                state.car.shippingCost = data.shipping.cost
+            }
         },
         setCarClear(state) {
             for (var key in state.car) {
@@ -69,6 +73,9 @@ export const carModule = {
         },
         setCarVat(state, vat) {
             state.car.vat = vat
+        },
+        setCarShippingCost(state, cost) {
+            state.car.shippingCost = cost
         },
     },
 

@@ -49,6 +49,7 @@ class CarEditScreen extends Screen
 
         return [
             'car' => $car,
+            'shippingCost' => $car->shipping
         ];
     }
 
@@ -146,6 +147,19 @@ class CarEditScreen extends Screen
                 ]),
                 Layout::rows([])->canSee(false)
             ]),
+            Layout::columns([ 
+                Layout::rows([
+                    Group::make([
+                        Input::make('shippingCost.cost')
+                            ->type('number')
+                            ->disabled()
+                            ->title(__('Shipping cost')),
+                        Input::make('hidden')
+                            ->type('hidden'),
+                    ])
+                ]),
+                Layout::rows([])->canSee(false)
+            ])
 
 
         ];

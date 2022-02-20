@@ -18,6 +18,7 @@
                                 <p>Volume: </p>
                                 <p>Fuel: </p>
                                 <p>Year: </p>
+                                <p>Country: </p>
                             </div>
                             <div class="col">
                                 <div class="text-end">
@@ -27,6 +28,7 @@
                                     <p><b>{{ car.engine_capacity }}</b></p>
                                     <p><b>{{ car.fuel }}</b></p>
                                     <p><b>{{ car.year }}</b></p>
+                                    <p><b>{{ car.country }}</b></p>
                                 </div>
                             </div>
                         </div>
