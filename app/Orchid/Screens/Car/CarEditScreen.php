@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Fields\Group;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\PictureMini;
 use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Screen;
@@ -100,7 +101,7 @@ class CarEditScreen extends Screen
                     ]),
                 ]),
                 Layout::rows([
-                    PictureMini::make('car.picture')
+                    Picture::make('car.picture')
                         ->width(500)
                         ->height(300)
                         ->targetRelativeUrl()                  
